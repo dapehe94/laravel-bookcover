@@ -1,6 +1,6 @@
 <?php
 
-namespace Scriptotek\GenericBookCover;
+namespace Dapehe94\LaravelBookcover;
 
 class BookCover
 {

@@ -1,15 +1,11 @@
 {
-    "name": "scriptotek/generic-book-cover",
-    "description": "PHP package to generate generic book covers for books where no original cover is available.",
+    "name": "dapehe94/laravel-bookcover",
+    "description": "A bookcover image generator for Laravel.",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kyrre Traavik Låberg",
-            "email": "k.t.laberg@ub.uio.no"
-        },
-        {
-            "name": "Dan Michael O. Heggø",
-            "email": "d.m.heggo@ub.uio.no"
+            "name": "Daniel Pérez",
+            "email": "dapehe94@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -20,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Scriptotek\\GenericBookCover\\": "src/"
+            "Dapehe94\\LaravelBookcover\\": "src/"
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Scriptotek\GenericBookCover;
+namespace spec\Dapehe94\LaravelBookcover;
 
 use PhpSpec\ObjectBehavior;
 
