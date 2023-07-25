@@ -4,7 +4,7 @@ namespace Scriptotek\GenericBookCover;
 
 class FontMetrics
 {
-    protected $baseFontFactor = 205;
+    protected $baseFontFactor = 255;
     protected $titleFontSize = 0;
 
     /**
@@ -95,7 +95,7 @@ class FontMetrics
     {
         $im = new \Imagick();
         $draw = new \ImagickDraw();
-        $draw->setFont('AvantGarde-Book');
+        $draw->setFont('assets/fonts/primary/AvantGarde-Book.ttf');
         $fontSize += 1;
         do {
             $fontSize -= 1;

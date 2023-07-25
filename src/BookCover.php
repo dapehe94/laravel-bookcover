@@ -41,6 +41,7 @@ class BookCover
     protected $edition = '';
     protected $publisher = '';
     protected $datePublished = '';
+    protected $watermark = '';
 
     /*
     |--------------------------------------------------------------------------
@@ -61,23 +62,68 @@ class BookCover
     /**
      * @var string  Font name
      */
-    protected $primaryFont = 'AvantGarde-Book';  // 'AvantGarde-Book'
+    protected $primaryFont = array(
+                'assets/fonts/primary/AvantGarde-Book.ttf',
+                'assets/fonts/primary/Super-Salad.ttf',
+                'assets/fonts/primary/Invisible-ExtraBold.otf',
+                'assets/fonts/primary/ScorchedEarth.otf',
+                'assets/fonts/primary/White-On-Black.ttf',
+                'assets/fonts/primary/A-Love-of-Thunder.ttf',
+                'assets/fonts/primary/PantonRustHeavy-GrSh.ttf',
+                'assets/fonts/primary/MPonderosa.ttf',
+                'assets/fonts/primary/Crackvetica.ttf',
+                'assets/fonts/primary/Personal-Services.ttf',
+                'assets/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
+                'assets/fonts/primary/Leander.ttf',
+                'assets/fonts/primary/Cut-the-crap.ttf',         
+                'assets/fonts/primary/Legend-Bold.otf',            
+                'assets/fonts/primary/the-dark.ttf',                 
+                'assets/fonts/primary/KGColdCoffee.ttf', 
+                'assets/fonts/primary/The-Blue-Alert.ttf',                       
+                'assets/fonts/primary/Dharma-Punk-2.ttf',                             
+                'assets/fonts/primary/Bouncy-Black.otf',         
+                'assets/fonts/primary/BADABB.ttf',
+            );
 
     /**
      * @var string  Font name
      */
-    protected $secondaryFont = 'Helvetica-Oblique';
+    protected $secondaryFont = array(
+                'assets/fonts/secondary/Helvetica-Oblique.ttf',
+                'assets/fonts/secondary/Hello-Valentina.ttf',
+                'assets/fonts/secondary/coolvetica.otf',
+                'assets/fonts/secondary/Nexa-Heavy.ttf',
+                'assets/fonts/secondary/Louis-George-Cafe-Bold.ttf'
+            );
 
     /**
      * @var string  Base cover filename
      */
     protected $baseCover;
 
+
+    /**
+     * @var array Text positions
+     */
+    protected $text_positions = array(
+            \Imagick::GRAVITY_NORTHWEST => 'NorthWest',
+            \Imagick::GRAVITY_NORTH => 'North',
+            \Imagick::GRAVITY_NORTHEAST => 'NorthEast',
+            \Imagick::GRAVITY_WEST => 'West',
+            \Imagick::GRAVITY_CENTER => 'Center',
+            \Imagick::GRAVITY_SOUTHWEST => 'SouthWest',
+            \Imagick::GRAVITY_SOUTH => 'South',
+            \Imagick::GRAVITY_SOUTHEAST => 'SouthEast',
+            \Imagick::GRAVITY_EAST => 'East'
+        );
+
+
     public function __construct()
     {
         $this->fontMetrics = new FontMetrics();
         $this->baseCover = dirname(__FILE__) . '/../assets/autocover5.png';
-        $this->setTextColor('white');
+        $colortext = rand(0,1) ? 'white' : 'black';
+        $this->setTextColor($colortext);
         $this->setBackgroundColor('#c10001');
     }
 
@@ -128,6 +174,7 @@ class BookCover
         $colors[9] = '#00c4da';
         $colors[10] = '#4643bb';
         $colors[11] = '#610c8c';
+        $colors[12] = '#000000';
 
         shuffle($colors);
         $this->setBackgroundColor($colors[0]);
@@ -185,6 +232,14 @@ class BookCover
         return $this;
     }
 
+    public function setWatermark($watermark)
+    {
+        $this->watermark = $watermark;
+        $this->dirty = true;
+
+        return $this;
+    }
+
     public function getImage($maxWidth=0)
     {
         if ($this->dirty) {
@@ -221,30 +276,41 @@ class BookCover
         $draw = new \ImagickDraw();
         $draw->setFillColor($this->textColor);
         $draw->setGravity($gravity ?: \Imagick::GRAVITY_NORTHWEST);
-        $draw->setFont($this->primaryFont);
+        
+        $font = array_rand($this->primaryFont, 1);
+        $draw->setFont($this->primaryFont[$font]);
 
         return $draw;
     }
 
-    protected function drawTitle($top, $left, $right)
+    protected function drawTitle($text_position)
     {
-        $text = mb_strtoupper($this->title);
+        $text = rand(0,1) ? mb_strtoupper($this->title) : $this->title;
         if (empty($text)) {
             return 0;
         }
 
         $draw = $this->getDraw();
-        list($fontSize, $text) = $this->fontMetrics->getFontDataForTitle($text, $this->pageWidth - $right - $left);
+        list($fontSize, $text) = $this->fontMetrics->getFontDataForTitle($text, $this->pageWidth);
         $draw->setFontSize($fontSize);
 
-        $this->image->annotateImage($draw, $left, $top, 0, $text);
+        $north = array('NorthWest','North','NorthEast');
+        $south = array('SouthWest','South','SouthEast');
+        $west = array('NorthWest','West','SouthWest');
+        $east = array('NorthEast','SouthEast','East');
+
+        $draw->setGravity($text_position);
+
+        $top = 0;
+        $left = 0;
+        if(in_array($this->text_positions[$text_position], $north)) $top = 50;
+        if(in_array($this->text_positions[$text_position], $south)) $top = 50;
+        if(in_array($this->text_positions[$text_position], $west)) $left = 30;
+        if(in_array($this->text_positions[$text_position], $east)) $left = 30;
 
         $metrics = $this->image->queryFontMetrics($draw, $text);
-
-//        $draw = new \ImagickDraw();
-//        $draw->setFillColor(new \ImagickPixel('rgba(100%, 0%, 0%, 0.5)'));
-//        $draw->rectangle($left, $top, $left + $metrics['textWidth'], $top + $metrics['textHeight'] - $metrics['descender']);
-//        $this->image->drawImage($draw);
+        
+        $this->image->annotateImage($draw, $left, $top, 0, $text);
 
         return $metrics['textHeight'] - $metrics['descender'];
     }
@@ -286,7 +352,7 @@ class BookCover
         return $metrics['textHeight'] - $metrics['descender'];
     }
 
-    protected function drawCreators($top, $left)
+    protected function drawCreators($text_position)
     {
         $text = $this->creators;
         if (empty($text)) {
@@ -296,10 +362,54 @@ class BookCover
         $draw = $this->getDraw();
 
         list($fontSize, $text) = $this->fontMetrics->getFontDataForCreators($text);
-        $draw->setFontSize($fontSize);
 
-        $margin = 50;
-        $this->image->annotateImage($draw, $left, $top + $margin, 0, $text);
+        $font = array_rand($this->secondaryFont, 1);
+        $draw->setFont($this->secondaryFont[$font]);
+
+        $draw->setFontSize($fontSize - 20);        
+        
+        $top = 50;
+        $left = 0;
+
+        switch ($this->text_positions[$text_position]) {
+            case 'North':
+                $author_position = \Imagick::GRAVITY_SOUTH;
+                break;
+            case 'South':
+                $author_position = \Imagick::GRAVITY_NORTH;
+                break;    
+            case 'NorthWest':
+                $author_position = \Imagick::GRAVITY_SOUTHWEST;
+                $left = 30;
+                break;          
+            case 'NorthEast':
+                $author_position = \Imagick::GRAVITY_SOUTHEAST;
+                $left = 30;
+                break;
+            case 'West':
+                $author_position = \Imagick::GRAVITY_SOUTHWEST;
+                $left = 30;
+                break;   
+            case 'East':
+                $author_position = \Imagick::GRAVITY_SOUTHEAST;
+                $left = 30;
+                break;    
+            case 'SouthWest':
+                $author_position = \Imagick::GRAVITY_NORTHWEST;
+                $left = 30;
+                break;   
+            case 'SouthEast':
+                $author_position = \Imagick::GRAVITY_NORTHEAST;
+                $left = 30;
+                break;       
+            case 'Center':
+                $author_position = \Imagick::GRAVITY_SOUTH;
+                break;                                                                                                     
+        }
+
+        $draw->setGravity($author_position);
+
+        $this->image->annotateImage($draw, $left, $top, 0, $text);
 
         $metrics = $this->image->queryFontMetrics($draw, $text);
 
@@ -308,7 +418,7 @@ class BookCover
 
     protected function drawPublisherDate($right, $bottom)
     {
-        $text = $this->publisher . ', ' . $this->datePublished;
+        $text = $this->publisher . ' ' . $this->datePublished;
         if (empty($text)) {
             return 0;
         }
@@ -319,11 +429,12 @@ class BookCover
         $draw->setFontSize(16);
         $metrics = $this->image->queryFontMetrics($draw, $text);
         $textheight = $metrics['textHeight'] - $metrics['descender'];
-        //$image->annotateImage($draw, $right, $bottom, 0,$this->publisher.", ".$year." ".$color);
+
         $this->image->annotateImage($draw, $right, $bottom, 0, $text);
 
         return $textheight;
     }
+
 
     protected function make()
     {
@@ -333,6 +444,7 @@ class BookCover
         $bottom = 20;
 
         $background = new \Imagick($this->baseCover);
+        
         list($width, $height) = array_values($background->getImageGeometry());
         $this->pageWidth = $width;
         $this->pageHeight = $height;
@@ -341,11 +453,18 @@ class BookCover
         $this->image->newImage($width, $height, $this->backgroundColor);
         $this->image->compositeImage($background, \imagick::COMPOSITE_OVER, 0, 0);
 
-        $top += $this->drawTitle($top, $left, $right);
+        if($this->watermark):
+            $watermark = new \Imagick($this->watermark);
+            $this->image->compositeImage($watermark, \imagick::COMPOSITE_COPYOPACITY, 0, 0);
+        endif;
+
+        $text_position = array_rand($this->text_positions, 1);
+
+        $top += $this->drawTitle($text_position);
         $top += $this->drawSubtitle($top, $left, $right);
         $top += $this->drawEdition($top, $right);
 
-        $this->drawCreators($top, $left);
+        $this->drawCreators($text_position);
         $this->drawPublisherDate($right, $bottom);
 
         $this->image->setImageFormat('png');
