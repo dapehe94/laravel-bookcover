@@ -17,6 +17,13 @@
             "Dapehe94\\LaravelBookcover\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dapehe94\\LaravelBookcover\\Providers\\LaravelBookcoverServiceProvider"
+            ]
+        }
+    },    
     "minimum-stability": "dev",
     "prefer-stable": true    
 }
