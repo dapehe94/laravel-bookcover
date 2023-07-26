@@ -14,7 +14,7 @@ class LaravelBookcoverServiceProvider extends ServiceProvider
     {
 
         $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/laravel-bookcover'),
-        ], 'public');        
+            dirname(__DIR__) . '/../public' => public_path('vendor/laravel-bookcover'),
+        ], 'laravel-assets');        
     }
 }
