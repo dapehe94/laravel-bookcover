@@ -8,18 +8,16 @@
             "email": "dapehe94@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": "^8.0.2",
         "ext-imagick": "*",
-        "phpspec/phpspec": "~2.0",
-        "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.7",        
+        "phpspec/phpspec": "~2.0"        
     },
     "autoload": {
         "psr-4": {
             "Dapehe94\\LaravelBookcover\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true    
 }
