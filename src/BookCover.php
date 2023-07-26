@@ -69,20 +69,16 @@ class BookCover
                 'vendor/laravel-bookcover/fonts/primary/ScorchedEarth.otf',
                 'vendor/laravel-bookcover/fonts/primary/White-On-Black.ttf',
                 'vendor/laravel-bookcover/fonts/primary/A-Love-of-Thunder.ttf',
-                'vendor/laravel-bookcover/fonts/primary/PantonRustHeavy-GrSh.ttf',
                 'vendor/laravel-bookcover/fonts/primary/MPonderosa.ttf',
                 'vendor/laravel-bookcover/fonts/primary/Crackvetica.ttf',
                 'vendor/laravel-bookcover/fonts/primary/Personal-Services.ttf',
                 'vendor/laravel-bookcover/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
-                'vendor/laravel-bookcover/fonts/primary/Leander.ttf',
                 'vendor/laravel-bookcover/fonts/primary/Cut-the-crap.ttf',         
                 'vendor/laravel-bookcover/fonts/primary/Legend-Bold.otf',            
                 'vendor/laravel-bookcover/fonts/primary/the-dark.ttf',                 
-                'vendor/laravel-bookcover/fonts/primary/KGColdCoffee.ttf', 
                 'vendor/laravel-bookcover/fonts/primary/The-Blue-Alert.ttf',                       
                 'vendor/laravel-bookcover/fonts/primary/Dharma-Punk-2.ttf',                             
-                'vendor/laravel-bookcover/fonts/primary/Bouncy-Black.otf',         
-                'vendor/laravel-bookcover/fonts/primary/BADABB.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Bouncy-Black.otf'
             );
 
     /**
