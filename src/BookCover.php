@@ -63,37 +63,37 @@ class BookCover
      * @var string  Font name
      */
     protected $primaryFont = array(
-                'public/vendor/laravel-bookcover/fonts/primary/AvantGarde-Book.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/Super-Salad.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/Invisible-ExtraBold.otf',
-                'public/vendor/laravel-bookcover/fonts/primary/ScorchedEarth.otf',
-                'public/vendor/laravel-bookcover/fonts/primary/White-On-Black.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/A-Love-of-Thunder.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/PantonRustHeavy-GrSh.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/MPonderosa.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/Crackvetica.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/Personal-Services.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
-                'public/vendor/laravel-bookcover/fonts/primary/Leander.ttf',
-                'public/vendor/laravel-bookcover/fonts/primary/Cut-the-crap.ttf',         
-                'public/vendor/laravel-bookcover/fonts/primary/Legend-Bold.otf',            
-                'public/vendor/laravel-bookcover/fonts/primary/the-dark.ttf',                 
-                'public/vendor/laravel-bookcover/fonts/primary/KGColdCoffee.ttf', 
-                'public/vendor/laravel-bookcover/fonts/primary/The-Blue-Alert.ttf',                       
-                'public/vendor/laravel-bookcover/fonts/primary/Dharma-Punk-2.ttf',                             
-                'public/vendor/laravel-bookcover/fonts/primary/Bouncy-Black.otf',         
-                'public/vendor/laravel-bookcover/fonts/primary/BADABB.ttf',
+                'vendor/laravel-bookcover/fonts/primary/AvantGarde-Book.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Super-Salad.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Invisible-ExtraBold.otf',
+                'vendor/laravel-bookcover/fonts/primary/ScorchedEarth.otf',
+                'vendor/laravel-bookcover/fonts/primary/White-On-Black.ttf',
+                'vendor/laravel-bookcover/fonts/primary/A-Love-of-Thunder.ttf',
+                'vendor/laravel-bookcover/fonts/primary/PantonRustHeavy-GrSh.ttf',
+                'vendor/laravel-bookcover/fonts/primary/MPonderosa.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Crackvetica.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Personal-Services.ttf',
+                'vendor/laravel-bookcover/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
+                'vendor/laravel-bookcover/fonts/primary/Leander.ttf',
+                'vendor/laravel-bookcover/fonts/primary/Cut-the-crap.ttf',         
+                'vendor/laravel-bookcover/fonts/primary/Legend-Bold.otf',            
+                'vendor/laravel-bookcover/fonts/primary/the-dark.ttf',                 
+                'vendor/laravel-bookcover/fonts/primary/KGColdCoffee.ttf', 
+                'vendor/laravel-bookcover/fonts/primary/The-Blue-Alert.ttf',                       
+                'vendor/laravel-bookcover/fonts/primary/Dharma-Punk-2.ttf',                             
+                'vendor/laravel-bookcover/fonts/primary/Bouncy-Black.otf',         
+                'vendor/laravel-bookcover/fonts/primary/BADABB.ttf',
             );
 
     /**
      * @var string  Font name
      */
     protected $secondaryFont = array(
-                'public/vendor/laravel-bookcover/fonts/secondary/Helvetica-Oblique.ttf',
-                'public/vendor/laravel-bookcover/fonts/secondary/Hello-Valentina.ttf',
-                'public/vendor/laravel-bookcover/fonts/secondary/coolvetica.otf',
-                'public/vendor/laravel-bookcover/fonts/secondary/Nexa-Heavy.ttf',
-                'public/vendor/laravel-bookcover/fonts/secondary/Louis-George-Cafe-Bold.ttf'
+                'vendor/laravel-bookcover/fonts/secondary/Helvetica-Oblique.ttf',
+                'vendor/laravel-bookcover/fonts/secondary/Hello-Valentina.ttf',
+                'vendor/laravel-bookcover/fonts/secondary/coolvetica.otf',
+                'vendor/laravel-bookcover/fonts/secondary/Nexa-Heavy.ttf',
+                'vendor/laravel-bookcover/fonts/secondary/Louis-George-Cafe-Bold.ttf'
             );
 
     /**
