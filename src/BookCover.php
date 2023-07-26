@@ -228,12 +228,20 @@ class BookCover
         return $this;
     }
 
-    public function setWatermark($watermark)
+    public function randomFile($dir) 
     {
-        $this->watermark = $watermark;
-        $this->dirty = true;
-
-        return $this;
+                    
+        $files = scandir($dir);            
+        if (($key = array_search('.', $files)) !== false) {
+            unset($files[$key]);
+        }
+            
+        if (($key = array_search('..', $files)) !== false) {
+            unset($files[$key]);
+        }
+              
+        $file = array_rand($files);        
+        return $dir . $files[$file];            
     }
 
     public function getImage($maxWidth=0)
@@ -448,6 +456,8 @@ class BookCover
         $this->image = new \Imagick();
         $this->image->newImage($width, $height, $this->backgroundColor);
         $this->image->compositeImage($background, \imagick::COMPOSITE_OVER, 0, 0);
+
+        $this->watermark = rand(0,1) ? $this->randomFile( public_path('vendor/laravel-bookcover') .'/assets/backgrounds/' ) : '';
 
         if($this->watermark):
             $watermark = new \Imagick($this->watermark);
