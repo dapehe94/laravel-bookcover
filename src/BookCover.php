@@ -63,37 +63,37 @@ class BookCover
      * @var string  Font name
      */
     protected $primaryFont = array(
-                'assets/fonts/primary/AvantGarde-Book.ttf',
-                'assets/fonts/primary/Super-Salad.ttf',
-                'assets/fonts/primary/Invisible-ExtraBold.otf',
-                'assets/fonts/primary/ScorchedEarth.otf',
-                'assets/fonts/primary/White-On-Black.ttf',
-                'assets/fonts/primary/A-Love-of-Thunder.ttf',
-                'assets/fonts/primary/PantonRustHeavy-GrSh.ttf',
-                'assets/fonts/primary/MPonderosa.ttf',
-                'assets/fonts/primary/Crackvetica.ttf',
-                'assets/fonts/primary/Personal-Services.ttf',
-                'assets/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
-                'assets/fonts/primary/Leander.ttf',
-                'assets/fonts/primary/Cut-the-crap.ttf',         
-                'assets/fonts/primary/Legend-Bold.otf',            
-                'assets/fonts/primary/the-dark.ttf',                 
-                'assets/fonts/primary/KGColdCoffee.ttf', 
-                'assets/fonts/primary/The-Blue-Alert.ttf',                       
-                'assets/fonts/primary/Dharma-Punk-2.ttf',                             
-                'assets/fonts/primary/Bouncy-Black.otf',         
-                'assets/fonts/primary/BADABB.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/AvantGarde-Book.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/Super-Salad.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/Invisible-ExtraBold.otf',
+                'public/vendor/laravel-bookcover/fonts/primary/ScorchedEarth.otf',
+                'public/vendor/laravel-bookcover/fonts/primary/White-On-Black.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/A-Love-of-Thunder.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/PantonRustHeavy-GrSh.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/MPonderosa.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/Crackvetica.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/Personal-Services.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/COCOGOOSELETTERPRESS.ttf',                              
+                'public/vendor/laravel-bookcover/fonts/primary/Leander.ttf',
+                'public/vendor/laravel-bookcover/fonts/primary/Cut-the-crap.ttf',         
+                'public/vendor/laravel-bookcover/fonts/primary/Legend-Bold.otf',            
+                'public/vendor/laravel-bookcover/fonts/primary/the-dark.ttf',                 
+                'public/vendor/laravel-bookcover/fonts/primary/KGColdCoffee.ttf', 
+                'public/vendor/laravel-bookcover/fonts/primary/The-Blue-Alert.ttf',                       
+                'public/vendor/laravel-bookcover/fonts/primary/Dharma-Punk-2.ttf',                             
+                'public/vendor/laravel-bookcover/fonts/primary/Bouncy-Black.otf',         
+                'public/vendor/laravel-bookcover/fonts/primary/BADABB.ttf',
             );
 
     /**
      * @var string  Font name
      */
     protected $secondaryFont = array(
-                'assets/fonts/secondary/Helvetica-Oblique.ttf',
-                'assets/fonts/secondary/Hello-Valentina.ttf',
-                'assets/fonts/secondary/coolvetica.otf',
-                'assets/fonts/secondary/Nexa-Heavy.ttf',
-                'assets/fonts/secondary/Louis-George-Cafe-Bold.ttf'
+                'public/vendor/laravel-bookcover/fonts/secondary/Helvetica-Oblique.ttf',
+                'public/vendor/laravel-bookcover/fonts/secondary/Hello-Valentina.ttf',
+                'public/vendor/laravel-bookcover/fonts/secondary/coolvetica.otf',
+                'public/vendor/laravel-bookcover/fonts/secondary/Nexa-Heavy.ttf',
+                'public/vendor/laravel-bookcover/fonts/secondary/Louis-George-Cafe-Bold.ttf'
             );
 
     /**

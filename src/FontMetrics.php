@@ -95,7 +95,7 @@ class FontMetrics
     {
         $im = new \Imagick();
         $draw = new \ImagickDraw();
-        $draw->setFont('assets/fonts/primary/AvantGarde-Book.ttf');
+        $draw->setFont('public/vendor/laravel-bookcover/fonts/primary/AvantGarde-Book.ttf');
         $fontSize += 1;
         do {
             $fontSize -= 1;
