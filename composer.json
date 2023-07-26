@@ -10,8 +10,7 @@
     ],
     "require": {
         "php": "^8.0.2",
-        "ext-imagick": "*",
-        "phpspec/phpspec": "^7.4.0"
+        "ext-imagick": "*"
     },
     "autoload": {
         "psr-4": {
