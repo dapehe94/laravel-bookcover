@@ -121,7 +121,7 @@ class BookCover
     public function __construct()
     {
         $this->fontMetrics = new FontMetrics();
-        $this->baseCover = dirname(__FILE__) . '/../assets/autocover5.png';
+        $this->baseCover = public_path('vendor/laravel-bookcover') . '/basecover.png';
         $colortext = rand(0,1) ? 'white' : 'black';
         $this->setTextColor($colortext);
         $this->setBackgroundColor('#c10001');
