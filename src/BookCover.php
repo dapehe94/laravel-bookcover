@@ -457,7 +457,7 @@ class BookCover
         $this->image->newImage($width, $height, $this->backgroundColor);
         $this->image->compositeImage($background, \imagick::COMPOSITE_OVER, 0, 0);
 
-        $this->watermark = rand(0,1) ? $this->randomFile( public_path('vendor/laravel-bookcover') .'/assets/backgrounds/' ) : '';
+        $this->watermark = rand(0,1) ? $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/' ) : '';
 
         if($this->watermark):
             $watermark = new \Imagick($this->watermark);
