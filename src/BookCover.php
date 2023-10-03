@@ -557,7 +557,9 @@ class BookCover
 
         if($this->watermark):
             $watermark = new \Imagick($this->watermark);
-            $this->image->compositeImage($watermark, \imagick::COMPOSITE_COPYOPACITY, 0, 0);
+            //$this->image->compositeImage($watermark, \imagick::COMPOSITE_COPYOPACITY, 0, 0);
+            $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
+            $this->image->compositeImage($watermark, (int)$consts[rand(0,2)], 0, 0);
         endif;
 
         $text_position = array_rand($this->text_positions, 1);
