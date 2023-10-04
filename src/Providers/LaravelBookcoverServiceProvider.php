@@ -13,7 +13,7 @@ class LaravelBookcoverServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        // Before delete public vendor folder
         Storage::deleteDirectory(public_path('vendor/laravel-bookcover'));
 
         $this->publishes([
