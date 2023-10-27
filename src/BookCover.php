@@ -42,6 +42,7 @@ class BookCover
     protected $publisher = '';
     protected $datePublished = '';
     protected $watermark = '';
+    protected $style = '';
 
     /*
     |--------------------------------------------------------------------------
@@ -542,6 +543,11 @@ class BookCover
         $right = 20;
         $top = 50;
         $bottom = 20;
+        
+        $styles = array('background','none');
+        $style = array_rand($styles, 1);
+
+        $this->style = $style;
 
         $background = new \Imagick($this->baseCover);
         
@@ -553,9 +559,10 @@ class BookCover
         $this->image->newImage($width, $height, $this->backgroundColor);
         $this->image->compositeImage($background, \imagick::COMPOSITE_OVER, 0, 0);
 
-        $this->watermark = rand(0,1) ? $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/' ) : '';
+        //$this->watermark = rand(0,1) ? $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/' ) : '';
 
-        if($this->watermark):
+        if($this->style === 'background'):
+            $this->watermark = $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/' );
             $watermark = new \Imagick($this->watermark);
             //$this->image->compositeImage($watermark, \imagick::COMPOSITE_COPYOPACITY, 0, 0);
             $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
