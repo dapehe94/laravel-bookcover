@@ -42,6 +42,7 @@ class BookCover
     protected $publisher = '';
     protected $datePublished = '';
     protected $watermark = '';
+    protected $style = '';
 
     /*
     |--------------------------------------------------------------------------
@@ -324,6 +325,14 @@ class BookCover
         return $this;
     }
 
+    public function setStyle($style)
+    {
+        $this->style = $style;
+        $this->dirty = true;
+
+        return $this;
+    }
+    
     public function randomFile($dir) 
     {
                     
@@ -553,12 +562,26 @@ class BookCover
         $this->image->newImage($width, $height, $this->backgroundColor);
         $this->image->compositeImage($background, \imagick::COMPOSITE_OVER, 0, 0);
 
-        if(rand(true,false)):
-            $this->watermark = $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/' );
-            $watermark = new \Imagick($this->watermark);
-            $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
-            $this->image->compositeImage($watermark, (int)$consts[rand(0,2)], 0, 0);
-        endif;
+        switch ($this->style) {
+            case 'image':
+                $this->watermark = $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/image/' );
+                $watermark = new \Imagick($this->watermark);
+                $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
+                $this->image->compositeImage($watermark, (int)$consts[rand(0,2)], 0, 0);
+                break;
+            case 'cover':
+                $this->watermark = $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/cover/' );
+                $watermark = new \Imagick($this->watermark);
+                $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
+                $this->image->compositeImage($watermark, (int)$consts[rand(0,2)], 0, 0);
+                break;
+            case 'texture':
+                $this->watermark = $this->randomFile( public_path('vendor/laravel-bookcover') .'/backgrounds/texture/' );
+                $watermark = new \Imagick($this->watermark);
+                $consts = array('\imagick::COMPOSITE_COPYOPACITY','\imagick::COMPOSITE_ATOP','\imagick::COMPOSITE_COPY');
+                $this->image->compositeImage($watermark, (int)$consts[rand(0,2)], 0, 0);
+                break;                            
+        }
 
         $text_position = array_rand($this->text_positions, 1);
 
